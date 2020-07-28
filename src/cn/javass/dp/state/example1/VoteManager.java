@@ -1,55 +1,60 @@
 package cn.javass.dp.state.example1;
-import java.util.*;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
- * Í¶Æ±¹ÜÀí
+ * æŠ•ç¥¨ç®¡ç†
  */
 public class VoteManager {
-	/**
-	 * ¼ÇÂ¼ÓÃ»§Í¶Æ±µÄ½á¹û,Map<String,String>¶ÔÓ¦Map<ÓÃ»§Ãû³Æ,Í¶Æ±µÄÑ¡Ïî>
-	 */
-	private Map<String,String> mapVote = new HashMap<String,String>();
-	/**
-	 * ¼ÇÂ¼ÓÃ»§Í¶Æ±´ÎÊı,Map<String,Integer>¶ÔÓ¦Map<ÓÃ»§Ãû³Æ,Í¶Æ±µÄ´ÎÊı>
-	 */
-	private Map<String,Integer> mapVoteCount = new HashMap<String,Integer>();
-	/**
-	 * Í¶Æ±
-	 * @param user Í¶Æ±ÈË£¬ÎªÁË¼òµ¥£¬¾ÍÊÇÓÃ»§Ãû³Æ
-	 * @param voteItem Í¶Æ±µÄÑ¡Ïî
-	 */
-	public void vote(String user,String voteItem){
-		//1£ºÏÈÎª¸ÃÓÃ»§Ôö¼ÓÍ¶Æ±µÄ´ÎÊı
-		//ÏÈ´Ó¼ÇÂ¼ÖĞÈ¡³öÒÑÓĞµÄÍ¶Æ±´ÎÊı
-		Integer oldVoteCount = mapVoteCount.get(user);
-		if(oldVoteCount==null){
-			oldVoteCount = 0;
-		}
-		oldVoteCount = oldVoteCount + 1;
-		mapVoteCount.put(user, oldVoteCount);
-		
-		//2£ºÅĞ¶Ï¸ÃÓÃ»§Í¶Æ±µÄÀàĞÍ£¬µ½µ×ÊÇÕı³£Í¶Æ±¡¢ÖØ¸´Í¶Æ±¡¢¶ñÒâÍ¶Æ±»¹ÊÇÉÏºÚÃûµ¥
-		//È»ºó¸ù¾İÍ¶Æ±ÀàĞÍÀ´½øĞĞÏàÓ¦µÄ²Ù×÷	
-		if(oldVoteCount==1){
-			//Õı³£Í¶Æ±
-			//¼ÇÂ¼µ½Í¶Æ±¼ÇÂ¼ÖĞ
-			mapVote.put(user, voteItem);
-			System.out.println("¹§Ï²ÄãÍ¶Æ±³É¹¦");
-		}else if(oldVoteCount>1 && oldVoteCount<5){
-			//ÖØ¸´Í¶Æ±
-			//ÔİÊ±²»×ö´¦Àí
-			System.out.println("Çë²»ÒªÖØ¸´Í¶Æ±");
-		}else if(oldVoteCount >= 5 && oldVoteCount<8){
-			//¶ñÒâÍ¶Æ±
-			//È¡ÏûÓÃ»§µÄÍ¶Æ±×Ê¸ñ£¬²¢È¡ÏûÍ¶Æ±¼ÇÂ¼
-			String s = mapVote.get(user);
-			if(s!=null){
-				mapVote.remove(user);
-			}
-			System.out.println("ÄãÓĞ¶ñÒâË¢Æ±ĞĞÎª£¬È¡ÏûÍ¶Æ±×Ê¸ñ");
-		}else if(oldVoteCount>=8){
-			//ºÚÃûµ¥
-			//¼ÇÈëºÚÃûµ¥ÖĞ£¬½ûÖ¹µÇÂ¼ÏµÍ³ÁË
-			System.out.println("½øÈëºÚÃûµ¥£¬½«½ûÖ¹µÇÂ¼ºÍÊ¹ÓÃ±¾ÏµÍ³");
-		}
-	}
+    /**
+     * è®°å½•ç”¨æˆ·æŠ•ç¥¨çš„ç»“æœ,Map<String,String>å¯¹åº”Map<ç”¨æˆ·åç§°,æŠ•ç¥¨çš„é€‰é¡¹>
+     */
+    private Map<String, String> mapVote = new HashMap<String, String>();
+    /**
+     * è®°å½•ç”¨æˆ·æŠ•ç¥¨æ¬¡æ•°,Map<String,Integer>å¯¹åº”Map<ç”¨æˆ·åç§°,æŠ•ç¥¨çš„æ¬¡æ•°>
+     */
+    private Map<String, Integer> mapVoteCount = new HashMap<String, Integer>();
+
+    /**
+     * æŠ•ç¥¨
+     *
+     * @param user     æŠ•ç¥¨äººï¼Œä¸ºäº†ç®€å•ï¼Œå°±æ˜¯ç”¨æˆ·åç§°
+     * @param voteItem æŠ•ç¥¨çš„é€‰é¡¹
+     */
+    public void vote(String user, String voteItem) {
+        //1ï¼šå…ˆä¸ºè¯¥ç”¨æˆ·å¢åŠ æŠ•ç¥¨çš„æ¬¡æ•°
+        //å…ˆä»è®°å½•ä¸­å–å‡ºå·²æœ‰çš„æŠ•ç¥¨æ¬¡æ•°
+        Integer oldVoteCount = mapVoteCount.get(user);
+        if (oldVoteCount == null) {
+            oldVoteCount = 0;
+        }
+        oldVoteCount = oldVoteCount + 1;
+        mapVoteCount.put(user, oldVoteCount);
+
+        //2ï¼šåˆ¤æ–­è¯¥ç”¨æˆ·æŠ•ç¥¨çš„ç±»å‹ï¼Œåˆ°åº•æ˜¯æ­£å¸¸æŠ•ç¥¨ã€é‡å¤æŠ•ç¥¨ã€æ¶æ„æŠ•ç¥¨è¿˜æ˜¯ä¸Šé»‘åå•
+        //ç„¶åæ ¹æ®æŠ•ç¥¨ç±»å‹æ¥è¿›è¡Œç›¸åº”çš„æ“ä½œ
+        if (oldVoteCount == 1) {
+            //æ­£å¸¸æŠ•ç¥¨
+            //è®°å½•åˆ°æŠ•ç¥¨è®°å½•ä¸­
+            mapVote.put(user, voteItem);
+            System.out.println("æ­å–œä½ æŠ•ç¥¨æˆåŠŸ");
+        } else if (oldVoteCount > 1 && oldVoteCount < 5) {
+            //é‡å¤æŠ•ç¥¨
+            //æš‚æ—¶ä¸åšå¤„ç†
+            System.out.println("è¯·ä¸è¦é‡å¤æŠ•ç¥¨");
+        } else if (oldVoteCount >= 5 && oldVoteCount < 8) {
+            //æ¶æ„æŠ•ç¥¨
+            //å–æ¶ˆç”¨æˆ·çš„æŠ•ç¥¨èµ„æ ¼ï¼Œå¹¶å–æ¶ˆæŠ•ç¥¨è®°å½•
+            String s = mapVote.get(user);
+            if (s != null) {
+                mapVote.remove(user);
+            }
+            System.out.println("ä½ æœ‰æ¶æ„åˆ·ç¥¨è¡Œä¸ºï¼Œå–æ¶ˆæŠ•ç¥¨èµ„æ ¼");
+        } else if (oldVoteCount >= 8) {
+            //é»‘åå•
+            //è®°å…¥é»‘åå•ä¸­ï¼Œç¦æ­¢ç™»å½•ç³»ç»Ÿäº†
+            System.out.println("è¿›å…¥é»‘åå•ï¼Œå°†ç¦æ­¢ç™»å½•å’Œä½¿ç”¨æœ¬ç³»ç»Ÿ");
+        }
+    }
 }
