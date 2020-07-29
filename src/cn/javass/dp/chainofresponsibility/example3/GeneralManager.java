@@ -1,25 +1,25 @@
 package cn.javass.dp.chainofresponsibility.example3;
 
-public class GeneralManager extends Handler{
-	public String handleFeeRequest(String user, double fee) {
-		String str = "";
-		//×Ü¾­ÀíµÄÈ¨ÏŞºÜ´ó£¬Ö»ÒªÇëÇóµ½ÁËÕâÀï£¬Ëû¶¼¿ÉÒÔ´¦Àí
-		if(fee >= 1000){
-			//ÎªÁË²âÊÔ£¬¼òµ¥µã£¬Ö»Í¬ÒâĞ¡ÀîµÄ
-			if("Ğ¡Àî".equals(user)){
-				str = "×Ü¾­ÀíÍ¬Òâ"+user+"¾Û²Í·ÑÓÃ"+fee+"ÔªµÄÇëÇó";
-			}else{
-				//ÆäËûÈËÒ»ÂÉ²»Í¬Òâ
-				str = "×Ü¾­Àí²»Í¬Òâ"+user+"¾Û²Í·ÑÓÃ"+fee+"ÔªµÄÇëÇó";
-			}
-			return str;
-		}else{
-			//Èç¹û»¹ÓĞºó¼ÌµÄ´¦Àí¶ÔÏó£¬¼ÌĞø´«µİ
-			if(this.successor!=null){
-				return successor.handleFeeRequest(user, fee);
-			}
-		}
-		return str;
-	}
+public class GeneralManager extends Handler {
+    public String handleFeeRequest(String user, double fee) {
+        String str = "";
+        //æ€»ç»ç†çš„æƒé™å¾ˆå¤§ï¼Œåªè¦è¯·æ±‚åˆ°äº†è¿™é‡Œï¼Œä»–éƒ½å¯ä»¥å¤„ç†
+        if (fee >= 1000) {
+            //ä¸ºäº†æµ‹è¯•ï¼Œç®€å•ç‚¹ï¼ŒåªåŒæ„å°æçš„
+            if ("å°æ".equals(user)) {
+                str = "æ€»ç»ç†åŒæ„" + user + "èšé¤è´¹ç”¨" + fee + "å…ƒçš„è¯·æ±‚";
+            } else {
+                //å…¶ä»–äººä¸€å¾‹ä¸åŒæ„
+                str = "æ€»ç»ç†ä¸åŒæ„" + user + "èšé¤è´¹ç”¨" + fee + "å…ƒçš„è¯·æ±‚";
+            }
+            return str;
+        } else {
+            //å¦‚æœè¿˜æœ‰åç»§çš„å¤„ç†å¯¹è±¡ï¼Œç»§ç»­ä¼ é€’
+            if (this.successor != null) {
+                return successor.handleFeeRequest(user, fee);
+            }
+        }
+        return str;
+    }
 
 }

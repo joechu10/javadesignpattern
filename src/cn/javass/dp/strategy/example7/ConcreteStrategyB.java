@@ -1,11 +1,14 @@
 package cn.javass.dp.strategy.example7;
 
 /**
- * ÊµÏÖ¾ßÌåµÄËã·¨
+ * å®žçŽ°å…·ä½“çš„ç®—æ³•
  */
 public class ConcreteStrategyB extends AbstractClass {
-	protected  void stepOneOpe(){}
-	protected  void stepTwoOpe(){}
+    protected void stepOneOpe() {
+    }
+
+    protected void stepTwoOpe() {
+    }
 }
 
 

@@ -2,23 +2,24 @@ package cn.javass.dp.strategy.example8;
 
 
 /**
- * ÈÕÖ¾¼ÇÂ¼µÄÉÏÏÂÎÄ
+ * æ—¥å¿—è®°å½•çš„ä¸Šä¸‹æ–‡
  */
 public class LogContext {
-	/**
-	 * ¼ÇÂ¼ÈÕÖ¾µÄ·½·¨£¬Ìá¹©¸ø¿Í»§¶ËÊ¹ÓÃ
-	 * @param msg Ğè¼ÇÂ¼µÄÈÕÖ¾ĞÅÏ¢
-	 */
-	public void log(String msg){
-		//ÔÚÉÏÏÂÎÄÀïÃæ£¬×ÔĞĞÊµÏÖ¶Ô¾ßÌå²ßÂÔµÄÑ¡Ôñ
-		//ÓÅÏÈÑ¡ÓÃ²ßÂÔ£º¼ÇÂ¼µ½Êı¾İ¿â
-		LogStrategy strategy = new DbLog();
-		try{
-			strategy.log(msg);
-		}catch(Exception err){
-			//³ö´íÁË£¬ÄÇ¾Í¼ÇÂ¼µ½ÎÄ¼şÖĞ
-			strategy = new FileLog();
-			strategy.log(msg);
-		}
-	}	
+    /**
+     * è®°å½•æ—¥å¿—çš„æ–¹æ³•ï¼Œæä¾›ç»™å®¢æˆ·ç«¯ä½¿ç”¨
+     *
+     * @param msg éœ€è®°å½•çš„æ—¥å¿—ä¿¡æ¯
+     */
+    public void log(String msg) {
+        //åœ¨ä¸Šä¸‹æ–‡é‡Œé¢ï¼Œè‡ªè¡Œå®ç°å¯¹å…·ä½“ç­–ç•¥çš„é€‰æ‹©
+        //ä¼˜å…ˆé€‰ç”¨ç­–ç•¥ï¼šè®°å½•åˆ°æ•°æ®åº“
+        LogStrategy strategy = new DbLog();
+        try {
+            strategy.log(msg);
+        } catch (Exception err) {
+            //å‡ºé”™äº†ï¼Œé‚£å°±è®°å½•åˆ°æ–‡ä»¶ä¸­
+            strategy = new FileLog();
+            strategy.log(msg);
+        }
+    }
 }

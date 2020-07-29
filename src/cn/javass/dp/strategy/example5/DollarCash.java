@@ -1,10 +1,11 @@
 package cn.javass.dp.strategy.example5;
+
 /**
- * ÃÀÔªÏÖ½ğÖ§¸¶
+ * ç¾å…ƒç°é‡‘æ”¯ä»˜
  */
-public class DollarCash implements PaymentStrategy{
-	
-	public void pay(PaymentContext ctx) {
-		System.out.println("ÏÖÔÚ¸ø"+ctx.getUserName()+"ÃÀÔªÏÖ½ğÖ§¸¶"+ctx.getMoney()+"Ôª");
-	}
+public class DollarCash implements PaymentStrategy {
+
+    public void pay(PaymentContext ctx) {
+        System.out.println("ç°åœ¨ç»™" + ctx.getUserName() + "ç¾å…ƒç°é‡‘æ”¯ä»˜" + ctx.getMoney() + "å…ƒ");
+    }
 }

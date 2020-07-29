@@ -1,42 +1,45 @@
 package cn.javass.dp.templatemethod.example1;
 
 /**
- * ÆÕÍ¨ÓÃ»§µÇÂ¼¿ØÖÆµÄÂß¼­´¦Àí
+ * æ™®é€šç”¨æˆ·ç™»å½•æ§åˆ¶çš„é€»è¾‘å¤„ç†
  */
 public class NormalLogin {
-	/**
-	 * ÅĞ¶ÏµÇÂ¼Êı¾İÊÇ·ñÕıÈ·£¬Ò²¾ÍÊÇÊÇ·ñÄÜµÇÂ¼³É¹¦
-	 * @param lm ·â×°µÇÂ¼Êı¾İµÄModel
-	 * @return true±íÊ¾µÇÂ¼³É¹¦£¬false±íÊ¾µÇÂ¼Ê§°Ü
-	 */
-	public boolean login(LoginModel lm) {
-		//1£º´ÓÊı¾İ¿â»ñÈ¡µÇÂ¼ÈËÔ±µÄĞÅÏ¢£¬ ¾ÍÊÇ¸ù¾İÓÃ»§±àºÅÈ¥»ñÈ¡ÈËÔ±µÄÊı¾İ
-		UserModel um = this.findUserByUserId(lm.getUserId());
-		//2£ºÅĞ¶Ï´ÓÇ°Ì¨´«µİ¹ıÀ´µÄµÇÂ¼Êı¾İ£¬ºÍÊı¾İ¿âÖĞÒÑÓĞµÄÊı¾İÊÇ·ñÆ¥Åä
-		//ÏÈÅĞ¶ÏÓÃ»§ÊÇ·ñ´æÔÚ£¬Èç¹ûumÎªnull£¬ËµÃ÷ÓÃ»§¿Ï¶¨²»´æÔÚ
-		//µ«ÊÇ²»Îªnull£¬ÓÃ»§²»Ò»¶¨´æÔÚ£¬ÒòÎªÊı¾İ²ã¿ÉÄÜ·µ»Ønew UserModel();
-		//Òò´Ë»¹ĞèÒª×ö½øÒ»²½µÄÅĞ¶Ï
-		if (um != null) {
-			//Èç¹ûÓÃ»§´æÔÚ£¬¼ì²éÓÃ»§±àºÅºÍÃÜÂëÊÇ·ñÆ¥Åä
-			if (um.getUserId().equals(lm.getUserId())
-					&& um.getPwd().equals(lm.getPwd())) {
-				return true;
-			}
-		}
-		return false;
-	}
-	/**
-	 * ¸ù¾İÓÃ»§±àºÅ»ñÈ¡ÓÃ»§µÄÏêÏ¸ĞÅÏ¢
-	 * @param userId ÓÃ»§±àºÅ
-	 * @return ¶ÔÓ¦µÄÓÃ»§µÄÏêÏ¸ĞÅÏ¢
-	 */
-	private UserModel findUserByUserId(String userId) {
-		// ÕâÀïÊ¡ÂÔ¾ßÌåµÄ´¦Àí£¬½ö×öÊ¾Òâ£¬·µ»ØÒ»¸öÓĞÄ¬ÈÏÊı¾İµÄ¶ÔÏó
-		UserModel um = new UserModel();
-		um.setUserId(userId);
-		um.setName("test");
-		um.setPwd("test");
-		um.setUuid("User0001");
-		return um;
-	}
+    /**
+     * åˆ¤æ–­ç™»å½•æ•°æ®æ˜¯å¦æ­£ç¡®ï¼Œä¹Ÿå°±æ˜¯æ˜¯å¦èƒ½ç™»å½•æˆåŠŸ
+     *
+     * @param lm å°è£…ç™»å½•æ•°æ®çš„Model
+     * @return trueè¡¨ç¤ºç™»å½•æˆåŠŸï¼Œfalseè¡¨ç¤ºç™»å½•å¤±è´¥
+     */
+    public boolean login(LoginModel lm) {
+        //1ï¼šä»æ•°æ®åº“è·å–ç™»å½•äººå‘˜çš„ä¿¡æ¯ï¼Œ å°±æ˜¯æ ¹æ®ç”¨æˆ·ç¼–å·å»è·å–äººå‘˜çš„æ•°æ®
+        UserModel um = this.findUserByUserId(lm.getUserId());
+        //2ï¼šåˆ¤æ–­ä»å‰å°ä¼ é€’è¿‡æ¥çš„ç™»å½•æ•°æ®ï¼Œå’Œæ•°æ®åº“ä¸­å·²æœ‰çš„æ•°æ®æ˜¯å¦åŒ¹é…
+        //å…ˆåˆ¤æ–­ç”¨æˆ·æ˜¯å¦å­˜åœ¨ï¼Œå¦‚æœumä¸ºnullï¼Œè¯´æ˜ç”¨æˆ·è‚¯å®šä¸å­˜åœ¨
+        //ä½†æ˜¯ä¸ä¸ºnullï¼Œç”¨æˆ·ä¸ä¸€å®šå­˜åœ¨ï¼Œå› ä¸ºæ•°æ®å±‚å¯èƒ½è¿”å›new UserModel();
+        //å› æ­¤è¿˜éœ€è¦åšè¿›ä¸€æ­¥çš„åˆ¤æ–­
+        if (um != null) {
+            //å¦‚æœç”¨æˆ·å­˜åœ¨ï¼Œæ£€æŸ¥ç”¨æˆ·ç¼–å·å’Œå¯†ç æ˜¯å¦åŒ¹é…
+            if (um.getUserId().equals(lm.getUserId())
+                    && um.getPwd().equals(lm.getPwd())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * æ ¹æ®ç”¨æˆ·ç¼–å·è·å–ç”¨æˆ·çš„è¯¦ç»†ä¿¡æ¯
+     *
+     * @param userId ç”¨æˆ·ç¼–å·
+     * @return å¯¹åº”çš„ç”¨æˆ·çš„è¯¦ç»†ä¿¡æ¯
+     */
+    private UserModel findUserByUserId(String userId) {
+        // è¿™é‡Œçœç•¥å…·ä½“çš„å¤„ç†ï¼Œä»…åšç¤ºæ„ï¼Œè¿”å›ä¸€ä¸ªæœ‰é»˜è®¤æ•°æ®çš„å¯¹è±¡
+        UserModel um = new UserModel();
+        um.setUserId(userId);
+        um.setName("test");
+        um.setPwd("test");
+        um.setUuid("User0001");
+        return um;
+    }
 }
