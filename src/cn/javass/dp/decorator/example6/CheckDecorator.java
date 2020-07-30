@@ -1,20 +1,21 @@
 package cn.javass.dp.decorator.example6;
+
 /**
- * ÊµÏÖÈ¨ÏŞ¿ØÖÆ
+ * å®ç°æƒé™æ§åˆ¶
  */
-public class CheckDecorator extends Decorator{
-	public CheckDecorator(GoodsSaleEbi ebi){
-		super(ebi);
-	}
-	
-	public boolean sale(String user,String customer, SaleModel saleModel) {
-		//¼òµ¥µã£¬Ö»ÈÃÕÅÈıÖ´ĞĞÕâ¸ö¹¦ÄÜ
-		if(!"ÕÅÈı".equals(user)){
-			System.out.println("¶Ô²»Æğ"+user+"£¬ÄãÃ»ÓĞ±£´æÏúÊÛµ¥µÄÈ¨ÏŞ");
-			//¾Í²»ÔÙµ÷ÓÃ±»×°ÊÎ¶ÔÏóµÄ¹¦ÄÜÁË
-			return false;
-		}else{
-			return this.ebi.sale(user, customer, saleModel);
-		}		
-	}
+public class CheckDecorator extends Decorator {
+    public CheckDecorator(GoodsSaleEbi ebi) {
+        super(ebi);
+    }
+
+    public boolean sale(String user, String customer, SaleModel saleModel) {
+        //ç®€å•ç‚¹ï¼Œåªè®©å¼ ä¸‰æ‰§è¡Œè¿™ä¸ªåŠŸèƒ½
+        if (!"å¼ ä¸‰".equals(user)) {
+            System.out.println("å¯¹ä¸èµ·" + user + "ï¼Œä½ æ²¡æœ‰ä¿å­˜é”€å”®å•çš„æƒé™");
+            //å°±ä¸å†è°ƒç”¨è¢«è£…é¥°å¯¹è±¡çš„åŠŸèƒ½äº†
+            return false;
+        } else {
+            return this.ebi.sale(user, customer, saleModel);
+        }
+    }
 }
