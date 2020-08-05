@@ -1,14 +1,14 @@
 package cn.javass.dp.abstractfactory.example5;
 
 public class BusinessObject {
-	public static void main(String[] args) {
-		//´´½¨DAOµÄ³éÏó¹¤³§
-		DAOFactory df = new XmlDAOFactory();
-		//Í¨¹ı³éÏó¹¤³§À´»ñÈ¡ĞèÒªµÄDAO½Ó¿Ú
-		OrderMainDAO mainDAO = df.createOrderMainDAO();
-		OrderDetailDAO detailDAO = df.createOrderDetailDAO();
-		//µ÷ÓÃDAOÀ´Íê³ÉÊı¾İ´æ´¢µÄ¹¦ÄÜ
-		mainDAO.saveOrderMain();
-		detailDAO.saveOrderDetail();
-	}
+    public static void main(String[] args) {
+        //åˆ›å»ºDAOçš„æŠ½è±¡å·¥å‚
+        DAOFactory df = new XmlDAOFactory();
+        //é€šè¿‡æŠ½è±¡å·¥å‚æ¥è·å–éœ€è¦çš„DAOæ¥å£
+        OrderMainDAO mainDAO = df.createOrderMainDAO();
+        OrderDetailDAO detailDAO = df.createOrderDetailDAO();
+        //è°ƒç”¨DAOæ¥å®Œæˆæ•°æ®å­˜å‚¨çš„åŠŸèƒ½
+        mainDAO.saveOrderMain();
+        detailDAO.saveOrderDetail();
+    }
 }

@@ -1,21 +1,24 @@
 package cn.javass.dp.abstractfactory.example1;
+
 /**
- *IntelµÄCPUÊµÏÖ
+ * Intelçš„CPUå®ç°
  */
-public class IntelCPU implements CPUApi{
-	/**
-	 * CPUµÄÕë½ÅÊıÄ¿
-	 */
-	private int pins = 0;
-	/**
-	 * ¹¹Ôì·½·¨£¬´«ÈëCPUµÄÕë½ÅÊıÄ¿
-	 * @param pins CPUµÄÕë½ÅÊıÄ¿
-	 */
-	public IntelCPU(int pins){
-		this.pins = pins;
-	}
-	
-	public void calculate() {
-		System.out.println("now in Intel CPU,pins="+pins);
-	}
+public class IntelCPU implements CPUApi {
+    /**
+     * CPUçš„é’ˆè„šæ•°ç›®
+     */
+    private int pins = 0;
+
+    /**
+     * æ„é€ æ–¹æ³•ï¼Œä¼ å…¥CPUçš„é’ˆè„šæ•°ç›®
+     *
+     * @param pins CPUçš„é’ˆè„šæ•°ç›®
+     */
+    public IntelCPU(int pins) {
+        this.pins = pins;
+    }
+
+    public void calculate() {
+        System.out.println("now in Intel CPU,pins=" + pins);
+    }
 }

@@ -1,20 +1,24 @@
 package cn.javass.dp.abstractfactory.example1;
+
 /**
- * Î¢ĞÇµÄÖ÷°å
+ * å¾®æ˜Ÿçš„ä¸»æ¿
  */
-public class MSIMainboard implements MainboardApi{
-	/**
-	 * CPU²å²ÛµÄ¿×Êı
-	 */
-	private int cpuHoles = 0;
-	/**
-	 * ¹¹Ôì·½·¨£¬´«ÈëCPU²å²ÛµÄ¿×Êı
-	 * @param cpuHoles CPU²å²ÛµÄ¿×Êı
-	 */
-	public MSIMainboard(int cpuHoles){
-		this.cpuHoles = cpuHoles;
-	}
-	public void installCPU() {
-		System.out.println("now in MSIMainboard,cpuHoles="+cpuHoles);
-	}
+public class MSIMainboard implements MainboardApi {
+    /**
+     * CPUæ’æ§½çš„å­”æ•°
+     */
+    private int cpuHoles;
+
+    /**
+     * æ„é€ æ–¹æ³•ï¼Œä¼ å…¥CPUæ’æ§½çš„å­”æ•°
+     *
+     * @param cpuHoles CPUæ’æ§½çš„å­”æ•°
+     */
+    public MSIMainboard(int cpuHoles) {
+        this.cpuHoles = cpuHoles;
+    }
+
+    public void installCPU() {
+        System.out.println("now in MSIMainboard,cpuHoles=" + cpuHoles);
+    }
 }

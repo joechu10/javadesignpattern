@@ -1,20 +1,24 @@
 package cn.javass.dp.abstractfactory.example3;
+
 /**
- * AMDµÄCPUÊµÏÖ
+ * AMDçš„CPUå®žçŽ°
  */
-public class AMDCPU implements CPUApi{
-	/**
-	 * CPUµÄÕë½ÅÊýÄ¿
-	 */
-	private int pins = 0;
-	/**
-	 * ¹¹Ôì·½·¨£¬´«ÈëCPUµÄÕë½ÅÊýÄ¿
-	 * @param pins CPUµÄÕë½ÅÊýÄ¿
-	 */
-	public AMDCPU(int pins){
-		this.pins = pins;
-	}
-	public void calculate() {
-		System.out.println("now in AMD CPU,pins="+pins);
-	}
+public class AMDCPU implements CPUApi {
+    /**
+     * CPUçš„é’ˆè„šæ•°ç›®
+     */
+    private int pins = 0;
+
+    /**
+     * æž„é€ æ–¹æ³•ï¼Œä¼ å…¥CPUçš„é’ˆè„šæ•°ç›®
+     *
+     * @param pins CPUçš„é’ˆè„šæ•°ç›®
+     */
+    public AMDCPU(int pins) {
+        this.pins = pins;
+    }
+
+    public void calculate() {
+        System.out.println("now in AMD CPU,pins=" + pins);
+    }
 }

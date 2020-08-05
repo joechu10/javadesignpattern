@@ -1,47 +1,50 @@
 package cn.javass.dp.abstractfactory.example1;
 
 /**
- * ×°»ú¹¤³ÌÊ¦µÄÀà
+ * è£…æœºå·¥ç¨‹å¸ˆçš„ç±»
  */
-public  class ComputerEngineer {
-	/**
-	 * ¶¨Òå×é×°»úÆ÷ĞèÒªµÄCPU
-	 */
-	private CPUApi cpu= null;
-	/**
-	 * ¶¨Òå×é×°»úÆ÷ĞèÒªµÄÖ÷°å
-	 */
-	private MainboardApi mainboard = null;
+public class ComputerEngineer {
+    /**
+     * å®šä¹‰ç»„è£…æœºå™¨éœ€è¦çš„CPU
+     */
+    private CPUApi cpu = null;
+    /**
+     * å®šä¹‰ç»„è£…æœºå™¨éœ€è¦çš„ä¸»æ¿
+     */
+    private MainboardApi mainboard = null;
 
-	/**
-	 * ×°»ú¹ı³Ì
-	 * @param cpuType ¿Í»§Ñ¡ÔñËùĞèCPUµÄÀàĞÍ
-	 * @param mainboardType ¿Í»§Ñ¡ÔñËùĞèÖ÷°åµÄÀàĞÍ
-	 */
-	public void makeComputer(int cpuType,int mainboardType){
-		//1£ºÊ×ÏÈ×¼±¸ºÃ×°»úËùĞèÒªµÄÅä¼ş
-		prepareHardwares(cpuType,mainboardType);
-		//2£º×é×°»úÆ÷
-		
-		//3£º²âÊÔ»úÆ÷
-		
-		//4£º½»¸¶¿Í»§
-	}
-	/**
-	 * ×¼±¸×°»úËùĞèÒªµÄÅä¼ş
-	 * @param cpuType ¿Í»§Ñ¡ÔñËùĞèCPUµÄÀàĞÍ
-	 * @param mainboardType ¿Í»§Ñ¡ÔñËùĞèÖ÷°åµÄÀàĞÍ
-	 */
-	private void prepareHardwares(int cpuType,int mainboardType){
-		//ÕâÀïÒªÈ¥×¼±¸CPUºÍÖ÷°åµÄ¾ßÌåÊµÏÖ£¬ÎªÁËÊ¾Àı¼òµ¥£¬ÕâÀïÖ»×¼±¸ÕâÁ½¸ö
-		//¿ÉÊÇ£¬×°»ú¹¤³ÌÊ¦²¢²»ÖªµÀÈçºÎÈ¥´´½¨£¬ÔõÃ´°ìÄØ£¿
-		
-		//Ö±½ÓÕÒÏàÓ¦µÄ¹¤³§»ñÈ¡
-		this.cpu = CPUFactory.createCPUApi(cpuType);
-		this.mainboard = MainboardFactory.createMainboardApi(mainboardType);
-		
-		//²âÊÔÒ»ÏÂÅä¼şÊÇ·ñºÃÓÃ
-		this.cpu.calculate();
-		this.mainboard.installCPU();
-	}
+    /**
+     * è£…æœºè¿‡ç¨‹
+     *
+     * @param cpuType       å®¢æˆ·é€‰æ‹©æ‰€éœ€CPUçš„ç±»å‹
+     * @param mainboardType å®¢æˆ·é€‰æ‹©æ‰€éœ€ä¸»æ¿çš„ç±»å‹
+     */
+    public void makeComputer(int cpuType, int mainboardType) {
+        //1ï¼šé¦–å…ˆå‡†å¤‡å¥½è£…æœºæ‰€éœ€è¦çš„é…ä»¶
+        prepareHardwares(cpuType, mainboardType);
+        //2ï¼šç»„è£…æœºå™¨
+
+        //3ï¼šæµ‹è¯•æœºå™¨
+
+        //4ï¼šäº¤ä»˜å®¢æˆ·
+    }
+
+    /**
+     * å‡†å¤‡è£…æœºæ‰€éœ€è¦çš„é…ä»¶
+     *
+     * @param cpuType       å®¢æˆ·é€‰æ‹©æ‰€éœ€CPUçš„ç±»å‹
+     * @param mainboardType å®¢æˆ·é€‰æ‹©æ‰€éœ€ä¸»æ¿çš„ç±»å‹
+     */
+    private void prepareHardwares(int cpuType, int mainboardType) {
+        //è¿™é‡Œè¦å»å‡†å¤‡CPUå’Œä¸»æ¿çš„å…·ä½“å®ç°ï¼Œä¸ºäº†ç¤ºä¾‹ç®€å•ï¼Œè¿™é‡Œåªå‡†å¤‡è¿™ä¸¤ä¸ª
+        //å¯æ˜¯ï¼Œè£…æœºå·¥ç¨‹å¸ˆå¹¶ä¸çŸ¥é“å¦‚ä½•å»åˆ›å»ºï¼Œæ€ä¹ˆåŠå‘¢ï¼Ÿ
+
+        //ç›´æ¥æ‰¾ç›¸åº”çš„å·¥å‚è·å–
+        this.cpu = CPUFactory.createCPUApi(cpuType);
+        this.mainboard = MainboardFactory.createMainboardApi(mainboardType);
+
+        //æµ‹è¯•ä¸€ä¸‹é…ä»¶æ˜¯å¦å¥½ç”¨
+        this.cpu.calculate();
+        this.mainboard.installCPU();
+    }
 }

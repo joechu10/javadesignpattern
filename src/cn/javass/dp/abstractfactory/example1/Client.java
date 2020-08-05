@@ -1,10 +1,10 @@
 package cn.javass.dp.abstractfactory.example1;
 
 public class Client {
-	public static void main(String[] args) {
-		//´´½¨×°»ú¹¤³ÌÊ¦¶ÔÏó
-		ComputerEngineer engineer = new ComputerEngineer();
-		//¸æËß×°»ú¹¤³ÌÊ¦×Ô¼ºÑ¡ÔñµÄÅä¼ş£¬ÈÃ×°»ú¹¤³ÌÊ¦×é×°µçÄÔ
-		engineer.makeComputer(1,2);
-	}
+    public static void main(String[] args) {
+        //åˆ›å»ºè£…æœºå·¥ç¨‹å¸ˆå¯¹è±¡
+        ComputerEngineer engineer = new ComputerEngineer();
+        //å‘Šè¯‰è£…æœºå·¥ç¨‹å¸ˆè‡ªå·±é€‰æ‹©çš„é…ä»¶ï¼Œè®©è£…æœºå·¥ç¨‹å¸ˆç»„è£…ç”µè„‘
+        engineer.makeComputer(1, 2);
+    }
 }

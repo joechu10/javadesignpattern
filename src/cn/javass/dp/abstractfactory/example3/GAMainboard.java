@@ -1,20 +1,24 @@
 package cn.javass.dp.abstractfactory.example3;
+
 /**
- * ¼¼¼ÎµÄÖ÷°å 
+ * æŠ€å˜‰çš„ä¸»æ¿
  */
 public class GAMainboard implements MainboardApi {
-	/**
-	 * CPU²å²ÛµÄ¿×Êı
-	 */
-	private int cpuHoles = 0;
-	/**
-	 * ¹¹Ôì·½·¨£¬´«ÈëCPU²å²ÛµÄ¿×Êı
-	 * @param cpuHoles CPU²å²ÛµÄ¿×Êı
-	 */
-	public GAMainboard(int cpuHoles){
-		this.cpuHoles = cpuHoles;
-	}
-	public void installCPU() {
-		System.out.println("now in GAMainboard,cpuHoles="+cpuHoles);
-	}
+    /**
+     * CPUæ’æ§½çš„å­”æ•°
+     */
+    private int cpuHoles = 0;
+
+    /**
+     * æ„é€ æ–¹æ³•ï¼Œä¼ å…¥CPUæ’æ§½çš„å­”æ•°
+     *
+     * @param cpuHoles CPUæ’æ§½çš„å­”æ•°
+     */
+    public GAMainboard(int cpuHoles) {
+        this.cpuHoles = cpuHoles;
+    }
+
+    public void installCPU() {
+        System.out.println("now in GAMainboard,cpuHoles=" + cpuHoles);
+    }
 }
