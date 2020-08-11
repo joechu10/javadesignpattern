@@ -1,31 +1,31 @@
 package cn.javass.dp.templatemethod.example4;
 
 public class Client {
-	public static void main(String[] args) {
-		//×¼±¸µÇÂ¼ÈËµÄĞÅÏ¢
-		LoginModel lm = new LoginModel();
-		lm.setLoginId("admin");
-		lm.setPwd("workerpwd");
-		//×¼±¸ÓÃÀ´½øĞĞÅĞ¶ÏµÄ¶ÔÏó
-		LoginTemplate lt = new WorkerLogin();
-		LoginTemplate lt2 = new NormalLogin();
-		//½øĞĞµÇÂ¼²âÊÔ
-		boolean flag = lt.login(lm);
-		System.out.println("¿ÉÒÔµÇÂ¼¹¤×÷Æ½Ì¨="+flag);
-		
-		boolean flag2 = lt2.login(lm);
-		System.out.println("¿ÉÒÔ½øĞĞÆÕÍ¨ÈËÔ±µÇÂ¼="+flag2);
-		
-		//×¼±¸µÇÂ¼ÈËµÄĞÅÏ¢
-		NormalLoginModel nlm = new NormalLoginModel();
-		nlm.setLoginId("testUser");
-		nlm.setPwd("testpwd");
-		nlm.setQuestion("testQuestion");
-		nlm.setAnswer("testAnswer");
-		//×¼±¸ÓÃÀ´½øĞĞÅĞ¶ÏµÄ¶ÔÏó
-		LoginTemplate lt3 = new NormalLogin2();
-		//½øĞĞµÇÂ¼²âÊÔ
-		boolean flag3 = lt3.login(nlm);
-		System.out.println("¿ÉÒÔ½øĞĞÆÕÍ¨ÈËÔ±¼ÓÇ¿°æµÇÂ¼="+flag3);
-	}
+    public static void main(String[] args) {
+        //å‡†å¤‡ç™»å½•äººçš„ä¿¡æ¯
+        LoginModel lm = new LoginModel();
+        lm.setLoginId("admin");
+        lm.setPwd("workerpwd");
+        //å‡†å¤‡ç”¨æ¥è¿›è¡Œåˆ¤æ–­çš„å¯¹è±¡
+        LoginTemplate lt = new WorkerLogin();
+        LoginTemplate lt2 = new NormalLogin();
+        //è¿›è¡Œç™»å½•æµ‹è¯•
+        boolean flag = lt.login(lm);
+        System.out.println("å¯ä»¥ç™»å½•å·¥ä½œå¹³å°=" + flag);
+
+        boolean flag2 = lt2.login(lm);
+        System.out.println("å¯ä»¥è¿›è¡Œæ™®é€šäººå‘˜ç™»å½•=" + flag2);
+
+        //å‡†å¤‡ç™»å½•äººçš„ä¿¡æ¯
+        NormalLoginModel nlm = new NormalLoginModel();
+        nlm.setLoginId("testUser");
+        nlm.setPwd("testpwd");
+        nlm.setQuestion("testQuestion");
+        nlm.setAnswer("testAnswer");
+        //å‡†å¤‡ç”¨æ¥è¿›è¡Œåˆ¤æ–­çš„å¯¹è±¡
+        LoginTemplate lt3 = new NormalLogin2();
+        //è¿›è¡Œç™»å½•æµ‹è¯•
+        boolean flag3 = lt3.login(nlm);
+        System.out.println("å¯ä»¥è¿›è¡Œæ™®é€šäººå‘˜åŠ å¼ºç‰ˆç™»å½•=" + flag3);
+    }
 }

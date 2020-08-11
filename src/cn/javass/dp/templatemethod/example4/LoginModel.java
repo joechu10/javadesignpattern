@@ -1,26 +1,31 @@
 package cn.javass.dp.templatemethod.example4;
+
 /**
- * ·â×°½øĞĞµÇÂ¼¿ØÖÆËùĞèÒªµÄÊı¾İ
+ * å°è£…è¿›è¡Œç™»å½•æ§åˆ¶æ‰€éœ€è¦çš„æ•°æ®
  */
 public class LoginModel {
-	/**
-	 * µÇÂ¼ÈËÔ±µÄ±àºÅ£¬Í¨ÓÃµÄ£¬¿ÉÄÜÊÇÓÃ»§±àºÅ£¬Ò²¿ÉÄÜÊÇ¹¤×÷ÈËÔ±±àºÅ
-	 */
-	private String loginId;
-	/**
-	 * µÇÂ¼µÄÃÜÂë
-	 */
-	private String pwd;
-	public String getLoginId() {
-		return loginId;
-	}
-	public void setLoginId(String loginId) {
-		this.loginId = loginId;
-	}
-	public String getPwd() {
-		return pwd;
-	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}	
+    /**
+     * ç™»å½•äººå‘˜çš„ç¼–å·ï¼Œé€šç”¨çš„ï¼Œå¯èƒ½æ˜¯ç”¨æˆ·ç¼–å·ï¼Œä¹Ÿå¯èƒ½æ˜¯å·¥ä½œäººå‘˜ç¼–å·
+     */
+    private String loginId;
+    /**
+     * ç™»å½•çš„å¯†ç 
+     */
+    private String pwd;
+
+    public String getLoginId() {
+        return loginId;
+    }
+
+    public void setLoginId(String loginId) {
+        this.loginId = loginId;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
 }

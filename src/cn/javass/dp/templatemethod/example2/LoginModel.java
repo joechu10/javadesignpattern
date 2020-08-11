@@ -1,19 +1,24 @@
 package cn.javass.dp.templatemethod.example2;
+
 /**
- * ÃèÊöµÇÂ¼ÈËÔ±µÇÂ¼Ê±ÌîĞ´µÄĞÅÏ¢µÄÊı¾İÄ£ĞÍ
+ * æè¿°ç™»å½•äººå‘˜ç™»å½•æ—¶å¡«å†™çš„ä¿¡æ¯çš„æ•°æ®æ¨¡å‹
  */
-public class LoginModel{
-	private String workerId,pwd;
-	public String getWorkerId() {
-		return workerId;
-	}
-	public void setWorkerId(String workerId) {
-		this.workerId = workerId;
-	}
-	public String getPwd() {
-		return pwd;
-	}
-	public void setPwd(String pwd) {
-		this.pwd = pwd;
-	}
+public class LoginModel {
+    private String workerId, pwd;
+
+    public String getWorkerId() {
+        return workerId;
+    }
+
+    public void setWorkerId(String workerId) {
+        this.workerId = workerId;
+    }
+
+    public String getPwd() {
+        return pwd;
+    }
+
+    public void setPwd(String pwd) {
+        this.pwd = pwd;
+    }
 }

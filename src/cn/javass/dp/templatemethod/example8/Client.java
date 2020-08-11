@@ -1,49 +1,56 @@
 package cn.javass.dp.templatemethod.example8;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
 public class Client {
-	public static void main(String[] args) {
-		//×¼±¸Òª²âÊÔµÄÊı¾İ
-		UserModel um1 = new UserModel("u1","user1",23);
-		UserModel um2 = new UserModel("u2","user2",22);
-		UserModel um3 = new UserModel("u3","user3",21);
-		UserModel um4 = new UserModel("u4","user4",24);
-		//Ìí¼Óµ½ÁĞ±íÖĞ
-		List<UserModel> list = new ArrayList<UserModel>();
-		list.add(um1);
-		list.add(um2);
-		list.add(um3);
-		list.add(um4);
-		
-		System.out.println("ÅÅĞòÇ°---------------------¡µ");
-		printList(list);
-		
-		
-		//ÊµÏÖ±È½ÏÆ÷£¬Ò²¿ÉÒÔµ¥¶ÀÓÃÒ»¸öÀàÀ´ÊµÏÖ
-		Comparator c = new Comparator(){
-			public int compare(Object obj1, Object obj2) {
-				//¼ÙÈçÊµÏÖ°´ÕÕÄêÁäÉıĞòÅÅĞò
-				UserModel tempUm1 = (UserModel)obj1;
-				UserModel tempUm2 = (UserModel)obj2;
-				if(tempUm1.getAge() > tempUm2.getAge()){
-					return -1;
-				}else if(tempUm1.getAge() == tempUm2.getAge()){
-					return 0;
-				}else if(tempUm1.getAge() < tempUm2.getAge()){
-					return 1;
-				}
-				return 0;
-			}};
-		
-			//ÅÅĞò	
-		Collections.sort(list,c);
-		
-		System.out.println("ÅÅĞòºó---------------------¡µ");
-		printList(list);
-		
-	}
-	private static void printList(List<UserModel> list){
-		for(UserModel um : list){
-			System.out.println(um);
-		}
-	}
+    public static void main(String[] args) {
+        //å‡†å¤‡è¦æµ‹è¯•çš„æ•°æ®
+        UserModel um1 = new UserModel("u1", "user1", 23);
+        UserModel um2 = new UserModel("u2", "user2", 22);
+        UserModel um3 = new UserModel("u3", "user3", 21);
+        UserModel um4 = new UserModel("u4", "user4", 24);
+        //æ·»åŠ åˆ°åˆ—è¡¨ä¸­
+        List<UserModel> list = new ArrayList<UserModel>();
+        list.add(um1);
+        list.add(um2);
+        list.add(um3);
+        list.add(um4);
+
+        System.out.println("æ’åºå‰---------------------ã€‰");
+        printList(list);
+
+
+        //å®ç°æ¯”è¾ƒå™¨ï¼Œä¹Ÿå¯ä»¥å•ç‹¬ç”¨ä¸€ä¸ªç±»æ¥å®ç°
+        Comparator c = new Comparator() {
+            public int compare(Object obj1, Object obj2) {
+                //å‡å¦‚å®ç°æŒ‰ç…§å¹´é¾„å‡åºæ’åº
+                UserModel tempUm1 = (UserModel) obj1;
+                UserModel tempUm2 = (UserModel) obj2;
+                if (tempUm1.getAge() > tempUm2.getAge()) {
+                    return -1;
+                } else if (tempUm1.getAge() == tempUm2.getAge()) {
+                    return 0;
+                } else if (tempUm1.getAge() < tempUm2.getAge()) {
+                    return 1;
+                }
+                return 0;
+            }
+        };
+
+        //æ’åº
+        Collections.sort(list, c);
+
+        System.out.println("æ’åºå---------------------ã€‰");
+        printList(list);
+
+    }
+
+    private static void printList(List<UserModel> list) {
+        for (UserModel um : list) {
+            System.out.println(um);
+        }
+    }
 }

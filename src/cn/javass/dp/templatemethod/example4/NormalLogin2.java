@@ -1,39 +1,40 @@
 package cn.javass.dp.templatemethod.example4;
 
 /**
- * ÆÕÍ¨ÓÃ»§µÇÂ¼¿ØÖÆ¼ÓÇ¿°æµÄÂß¼­´¦Àí
+ * æ™®é€šç”¨æˆ·ç™»å½•æ§åˆ¶åŠ å¼ºç‰ˆçš„é€»è¾‘å¤„ç†
  */
-public class NormalLogin2 extends LoginTemplate{
-	public LoginModel findLoginUser(String loginId) {
-		// ÕâÀïÊ¡ÂÔ¾ßÌåµÄ´¦Àí£¬½ö×öÊ¾Òâ£¬·µ»ØÒ»¸öÓĞÄ¬ÈÏÊı¾İµÄ¶ÔÏó
-		//×¢ÒâÒ»µã£ºÕâÀïÊ¹ÓÃµÄÊÇ×Ô¼ºĞèÒªµÄÊı¾İÄ£ĞÍÁË
-		NormalLoginModel nlm = new NormalLoginModel();
-		nlm.setLoginId(loginId);
-		nlm.setPwd("testpwd");
-		nlm.setQuestion("testQuestion");
-		nlm.setAnswer("testAnswer");
-		
-		return nlm;
-	}
-	public boolean match(LoginModel lm,LoginModel dbLm){
-		//Õâ¸ö·½·¨ĞèÒª¸²¸Ç£¬ÒòÎªÏÖÔÚ½øĞĞµÇÂ¼¿ØÖÆµÄÊ±ºò£¬
-		//ĞèÒª¼ì²â4¸öÖµÊÇ·ñÕıÈ·£¬¶ø²»½ö½öÊÇÈ±Ê¡µÄ2¸ö
-		
-		//ÏÈµ÷ÓÃ¸¸ÀàÊµÏÖºÃµÄ£¬¼ì²â±àºÅºÍÃÜÂëÊÇ·ñÕıÈ·
-		boolean f1 = super.match(lm, dbLm);
-		if(f1){
-			//Èç¹û±àºÅºÍÃÜÂëÕıÈ·£¬¼ÌĞø¼ì²éÎÊÌâºÍ´ğ°¸ÊÇ·ñÕıÈ·
-			
-			//ÏÈ°ÑÊı¾İ×ª»»³É×Ô¼ºĞèÒªµÄÊı¾İ
-			NormalLoginModel nlm = (NormalLoginModel)lm;
-			NormalLoginModel dbNlm = (NormalLoginModel)dbLm;
-			//¼ì²éÎÊÌâºÍ´ğ°¸ÊÇ·ñÕıÈ·
-			if(dbNlm.getQuestion().equals(nlm.getQuestion())
-					&& dbNlm.getAnswer().equals(nlm.getAnswer())){
-				return true;
-			}
-		}
-		return false;
-	}
-	
+public class NormalLogin2 extends LoginTemplate {
+    public LoginModel findLoginUser(String loginId) {
+        // è¿™é‡Œçœç•¥å…·ä½“çš„å¤„ç†ï¼Œä»…åšç¤ºæ„ï¼Œè¿”å›ä¸€ä¸ªæœ‰é»˜è®¤æ•°æ®çš„å¯¹è±¡
+        //æ³¨æ„ä¸€ç‚¹ï¼šè¿™é‡Œä½¿ç”¨çš„æ˜¯è‡ªå·±éœ€è¦çš„æ•°æ®æ¨¡å‹äº†
+        NormalLoginModel nlm = new NormalLoginModel();
+        nlm.setLoginId(loginId);
+        nlm.setPwd("testpwd");
+        nlm.setQuestion("testQuestion");
+        nlm.setAnswer("testAnswer");
+
+        return nlm;
+    }
+
+    public boolean match(LoginModel lm, LoginModel dbLm) {
+        //è¿™ä¸ªæ–¹æ³•éœ€è¦è¦†ç›–ï¼Œå› ä¸ºç°åœ¨è¿›è¡Œç™»å½•æ§åˆ¶çš„æ—¶å€™ï¼Œ
+        //éœ€è¦æ£€æµ‹4ä¸ªå€¼æ˜¯å¦æ­£ç¡®ï¼Œè€Œä¸ä»…ä»…æ˜¯ç¼ºçœçš„2ä¸ª
+
+        //å…ˆè°ƒç”¨çˆ¶ç±»å®ç°å¥½çš„ï¼Œæ£€æµ‹ç¼–å·å’Œå¯†ç æ˜¯å¦æ­£ç¡®
+        boolean f1 = super.match(lm, dbLm);
+        if (f1) {
+            //å¦‚æœç¼–å·å’Œå¯†ç æ­£ç¡®ï¼Œç»§ç»­æ£€æŸ¥é—®é¢˜å’Œç­”æ¡ˆæ˜¯å¦æ­£ç¡®
+
+            //å…ˆæŠŠæ•°æ®è½¬æ¢æˆè‡ªå·±éœ€è¦çš„æ•°æ®
+            NormalLoginModel nlm = (NormalLoginModel) lm;
+            NormalLoginModel dbNlm = (NormalLoginModel) dbLm;
+            //æ£€æŸ¥é—®é¢˜å’Œç­”æ¡ˆæ˜¯å¦æ­£ç¡®
+            if (dbNlm.getQuestion().equals(nlm.getQuestion())
+                    && dbNlm.getAnswer().equals(nlm.getAnswer())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
