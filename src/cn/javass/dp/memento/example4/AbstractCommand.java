@@ -1,29 +1,32 @@
 package cn.javass.dp.memento.example4;
+
 /**
- * ÃüÁî¶ÔÏóµÄ¹«¹²¶ÔÏó£¬ÊµÏÖ¸÷¸öÃüÁî¶ÔÏóµÄ¹«¹²·½·¨
+ * å‘½ä»¤å¯¹è±¡çš„å…¬å…±å¯¹è±¡ï¼Œå®ç°å„ä¸ªå‘½ä»¤å¯¹è±¡çš„å…¬å…±æ–¹æ³•
  */
-public abstract class AbstractCommand implements Command{
-	/**
-	 * ¾ßÌåµÄ¹¦ÄÜÊµÏÖ£¬ÕâÀï²»¹Ü
-	 */
-	public abstract void execute();
-	/**
-	 * ³ÖÓĞÕæÕıµÄÃüÁîÊµÏÖÕß¶ÔÏó
-	 */
-	protected OperationApi operation = null;
-	public void setOperation(OperationApi operation) {
-		this.operation = operation;
-	}
-	
-	public Memento createMemento() {
-		return this.operation.createMemento();
-	}
+public abstract class AbstractCommand implements Command {
+    /**
+     * æŒæœ‰çœŸæ­£çš„å‘½ä»¤å®ç°è€…å¯¹è±¡
+     */
+    protected OperationApi operation = null;
 
-	public void redo(Memento m) {
-		this.operation.setMemento(m);
-	}
+    /**
+     * å…·ä½“çš„åŠŸèƒ½å®ç°ï¼Œè¿™é‡Œä¸ç®¡
+     */
+    public abstract void execute();
 
-	public void undo(Memento m) {
-		this.operation.setMemento(m);
-	}
+    public void setOperation(OperationApi operation) {
+        this.operation = operation;
+    }
+
+    public Memento createMemento() {
+        return this.operation.createMemento();
+    }
+
+    public void redo(Memento m) {
+        this.operation.setMemento(m);
+    }
+
+    public void undo(Memento m) {
+        this.operation.setMemento(m);
+    }
 }

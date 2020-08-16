@@ -1,41 +1,48 @@
 package cn.javass.dp.memento.example4;
+
 /**
- * ÔËËãÀà£¬ÕæÕıÊµÏÖ¼Ó¼õ·¨ÔËËã
+ * è¿ç®—ç±»ï¼ŒçœŸæ­£å®ç°åŠ å‡æ³•è¿ç®—
  */
-public class Operation implements OperationApi{
-	/**
-	 * ¼ÇÂ¼ÔËËãµÄ½á¹û
-	 */
-	private int result;
-	public int getResult() {
-		return result;
-	}
+public class Operation implements OperationApi {
+    /**
+     * è®°å½•è¿ç®—çš„ç»“æœ
+     */
+    private int result;
 
-	public void add(int num){
-		result += num;
-	}
-	public void substract(int num){
-		result -= num;
-	}
-	public Memento createMemento() {
-		MementoImpl m = new MementoImpl(result);
-		return m;
-	}
-	public void setMemento(Memento memento) {
-		MementoImpl m = (MementoImpl)memento;
-		this.result = m.getResult();
-	}
-	/**
-	 * ±¸ÍüÂ¼¶ÔÏó
-	 */
-	private static class MementoImpl implements Memento{
-		private int result = 0;
-		public MementoImpl(int result){
-			this.result = result;
-		}
+    public int getResult() {
+        return result;
+    }
 
-		public int getResult() {
-			return result;
-		}
-	}
+    public void add(int num) {
+        result += num;
+    }
+
+    public void substract(int num) {
+        result -= num;
+    }
+
+    public Memento createMemento() {
+        MementoImpl m = new MementoImpl(result);
+        return m;
+    }
+
+    public void setMemento(Memento memento) {
+        MementoImpl m = (MementoImpl) memento;
+        this.result = m.getResult();
+    }
+
+    /**
+     * å¤‡å¿˜å½•å¯¹è±¡
+     */
+    private static class MementoImpl implements Memento {
+        private int result = 0;
+
+        public MementoImpl(int result) {
+            this.result = result;
+        }
+
+        public int getResult() {
+            return result;
+        }
+    }
 }

@@ -1,38 +1,38 @@
 package cn.javass.dp.memento.example4;
 
 public class Client {
-	public static void main(String[] args) {
-		//1£º×é×°ÃüÁîºÍ½ÓÊÕÕß
-		//´´½¨½ÓÊÕÕß
-		OperationApi operation = new Operation();
-		//´´½¨ÃüÁî
-		AddCommand addCmd = new AddCommand(5);
-		SubstractCommand substractCmd = new SubstractCommand(3);
-		//×é×°ÃüÁîºÍ½ÓÊÕÕß
-		addCmd.setOperation(operation);
-		substractCmd.setOperation(operation);
-		
-		//2£º°ÑÃüÁîÉèÖÃµ½³ÖÓĞÕß£¬¾ÍÊÇ¼ÆËãÆ÷ÀïÃæ
-		Calculator calculator = new Calculator();
-		calculator.setAddCmd(addCmd);
-		calculator.setSubstractCmd(substractCmd);
-		
-		//3:Ä£Äâ°´ÏÂ°´Å¥£¬²âÊÔÒ»ÏÂ
-		calculator.addPressed();
-		System.out.println("Ò»´Î¼Ó·¨ÔËËãºóµÄ½á¹ûÎª£º"+operation.getResult());
-		calculator.substractPressed();
-		System.out.println("Ò»´Î¼õ·¨ÔËËãºóµÄ½á¹ûÎª£º"+operation.getResult());
-		
-		//²âÊÔ³·Ïû
-		calculator.undoPressed();
-		System.out.println("³·ÏúÒ»´ÎºóµÄ½á¹ûÎª£º"+operation.getResult());
-		calculator.undoPressed();
-		System.out.println("ÔÙ³·ÏúÒ»´ÎºóµÄ½á¹ûÎª£º"+operation.getResult());
-		
-		//²âÊÔ»Ö¸´
-		calculator.redoPressed();
-		System.out.println("»Ö¸´²Ù×÷Ò»´ÎºóµÄ½á¹ûÎª£º"+operation.getResult());
-		calculator.redoPressed();
-		System.out.println("ÔÙ»Ö¸´²Ù×÷Ò»´ÎºóµÄ½á¹ûÎª£º"+operation.getResult());
-	}
+    public static void main(String[] args) {
+        //1ï¼šç»„è£…å‘½ä»¤å’Œæ¥æ”¶è€…
+        //åˆ›å»ºæ¥æ”¶è€…
+        OperationApi operation = new Operation();
+        //åˆ›å»ºå‘½ä»¤
+        AddCommand addCmd = new AddCommand(5);
+        SubstractCommand substractCmd = new SubstractCommand(3);
+        //ç»„è£…å‘½ä»¤å’Œæ¥æ”¶è€…
+        addCmd.setOperation(operation);
+        substractCmd.setOperation(operation);
+
+        //2ï¼šæŠŠå‘½ä»¤è®¾ç½®åˆ°æŒæœ‰è€…ï¼Œå°±æ˜¯è®¡ç®—å™¨é‡Œé¢
+        Calculator calculator = new Calculator();
+        calculator.setAddCmd(addCmd);
+        calculator.setSubstractCmd(substractCmd);
+
+        //3:æ¨¡æ‹ŸæŒ‰ä¸‹æŒ‰é’®ï¼Œæµ‹è¯•ä¸€ä¸‹
+        calculator.addPressed();
+        System.out.println("ä¸€æ¬¡åŠ æ³•è¿ç®—åçš„ç»“æœä¸ºï¼š" + operation.getResult());
+        calculator.substractPressed();
+        System.out.println("ä¸€æ¬¡å‡æ³•è¿ç®—åçš„ç»“æœä¸ºï¼š" + operation.getResult());
+
+        //æµ‹è¯•æ’¤æ¶ˆ
+        calculator.undoPressed();
+        System.out.println("æ’¤é”€ä¸€æ¬¡åçš„ç»“æœä¸ºï¼š" + operation.getResult());
+        calculator.undoPressed();
+        System.out.println("å†æ’¤é”€ä¸€æ¬¡åçš„ç»“æœä¸ºï¼š" + operation.getResult());
+
+        //æµ‹è¯•æ¢å¤
+        calculator.redoPressed();
+        System.out.println("æ¢å¤æ“ä½œä¸€æ¬¡åçš„ç»“æœä¸ºï¼š" + operation.getResult());
+        calculator.redoPressed();
+        System.out.println("å†æ¢å¤æ“ä½œä¸€æ¬¡åçš„ç»“æœä¸ºï¼š" + operation.getResult());
+    }
 }

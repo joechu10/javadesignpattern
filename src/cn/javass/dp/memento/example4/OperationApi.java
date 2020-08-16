@@ -1,33 +1,41 @@
 package cn.javass.dp.memento.example4;
 
 /**
- * ²Ù×÷ÔËËãµÄ½Ó¿Ú
+ * æ“ä½œè¿ç®—çš„æ¥å£
  */
 public interface OperationApi {
-	/**
-	 * »ñÈ¡¼ÆËãÍê³ÉºóµÄ½á¹û
-	 * @return ¼ÆËãÍê³ÉºóµÄ½á¹û
-	 */
-	public int getResult();
-	/**
-	 * Ö´ĞĞ¼Ó·¨
-	 * @param num ĞèÒª¼ÓµÄÊı
-	 */
-	public void add(int num);
-	/**
-	 * Ö´ĞĞ¼õ·¨
-	 * @param num ĞèÒª¼õµÄÊı
-	 */
-	public void substract(int num);
-	
-	/**
-	 * ´´½¨±£´æÔ­·¢Æ÷¶ÔÏóµÄ×´Ì¬µÄ±¸ÍüÂ¼¶ÔÏó
-	 * @return ´´½¨ºÃµÄ±¸ÍüÂ¼¶ÔÏó
-	 */
-	public Memento createMemento();
-	/**
-	 * ÖØĞÂÉèÖÃÔ­·¢Æ÷¶ÔÏóµÄ×´Ì¬£¬ÈÃÆä»Øµ½±¸ÍüÂ¼¶ÔÏó¼ÇÂ¼µÄ×´Ì¬
-	 * @param memento ¼ÇÂ¼ÓĞÔ­·¢Æ÷×´Ì¬µÄ±¸ÍüÂ¼¶ÔÏó
-	 */
-	public void setMemento(Memento memento);
+    /**
+     * è·å–è®¡ç®—å®Œæˆåçš„ç»“æœ
+     *
+     * @return è®¡ç®—å®Œæˆåçš„ç»“æœ
+     */
+    public int getResult();
+
+    /**
+     * æ‰§è¡ŒåŠ æ³•
+     *
+     * @param num éœ€è¦åŠ çš„æ•°
+     */
+    public void add(int num);
+
+    /**
+     * æ‰§è¡Œå‡æ³•
+     *
+     * @param num éœ€è¦å‡çš„æ•°
+     */
+    public void substract(int num);
+
+    /**
+     * åˆ›å»ºä¿å­˜åŸå‘å™¨å¯¹è±¡çš„çŠ¶æ€çš„å¤‡å¿˜å½•å¯¹è±¡
+     *
+     * @return åˆ›å»ºå¥½çš„å¤‡å¿˜å½•å¯¹è±¡
+     */
+    public Memento createMemento();
+
+    /**
+     * é‡æ–°è®¾ç½®åŸå‘å™¨å¯¹è±¡çš„çŠ¶æ€ï¼Œè®©å…¶å›åˆ°å¤‡å¿˜å½•å¯¹è±¡è®°å½•çš„çŠ¶æ€
+     *
+     * @param memento è®°å½•æœ‰åŸå‘å™¨çŠ¶æ€çš„å¤‡å¿˜å½•å¯¹è±¡
+     */
+    public void setMemento(Memento memento);
 }

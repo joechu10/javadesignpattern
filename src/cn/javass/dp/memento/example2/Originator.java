@@ -1,44 +1,51 @@
 package cn.javass.dp.memento.example2;
 
 /**
- * Ô­·¢Æ÷¶ÔÏó
+ * åŸå‘å™¨å¯¹è±¡
  */
 public class Originator {
-	/**
-	 * Ê¾Òâ£¬±íÊ¾Ô­·¢Æ÷µÄ×´Ì¬
-	 */
-	private String state = "";
-	/**
-	 * ´´½¨±£´æÔ­·¢Æ÷¶ÔÏóµÄ×´Ì¬µÄ±¸ÍüÂ¼¶ÔÏó
-	 * @return ´´½¨ºÃµÄ±¸ÍüÂ¼¶ÔÏó
-	 */
-	public Memento createMemento() {
-		return new MementoImpl(state);
-	}
-	/**
-	 * ÖØĞÂÉèÖÃÔ­·¢Æ÷¶ÔÏóµÄ×´Ì¬£¬ÈÃÆä»Øµ½±¸ÍüÂ¼¶ÔÏó¼ÇÂ¼µÄ×´Ì¬
-	 * @param memento ¼ÇÂ¼ÓĞÔ­·¢Æ÷×´Ì¬µÄ±¸ÍüÂ¼¶ÔÏó
-	 */
-	public void setMemento(Memento memento) {
-		MementoImpl mementoImpl = (MementoImpl)memento;
-		this.state = mementoImpl.getState();
-	}
-	/**
-	 * ÕæÕıµÄ±¸ÍüÂ¼¶ÔÏó£¬ÊµÏÖ±¸ÍüÂ¼Õ­½Ó¿Ú
-	 * ÊµÏÖ³ÉË½ÓĞµÄÄÚ²¿Àà£¬²»ÈÃÍâ²¿·ÃÎÊ
-	 */
-	private static class MementoImpl implements Memento{
-		/**
-		 * Ê¾Òâ£¬±íÊ¾ĞèÒª±£´æµÄ×´Ì¬
-		 */
-		private String state = "";
-		public MementoImpl(String state){
-			this.state = state;
-		}
-		public String getState() {
-			return state;
-		}
-	}
+    /**
+     * ç¤ºæ„ï¼Œè¡¨ç¤ºåŸå‘å™¨çš„çŠ¶æ€
+     */
+    private String state = "";
+
+    /**
+     * åˆ›å»ºä¿å­˜åŸå‘å™¨å¯¹è±¡çš„çŠ¶æ€çš„å¤‡å¿˜å½•å¯¹è±¡
+     *
+     * @return åˆ›å»ºå¥½çš„å¤‡å¿˜å½•å¯¹è±¡
+     */
+    public Memento createMemento() {
+        return new MementoImpl(state);
+    }
+
+    /**
+     * é‡æ–°è®¾ç½®åŸå‘å™¨å¯¹è±¡çš„çŠ¶æ€ï¼Œè®©å…¶å›åˆ°å¤‡å¿˜å½•å¯¹è±¡è®°å½•çš„çŠ¶æ€
+     *
+     * @param memento è®°å½•æœ‰åŸå‘å™¨çŠ¶æ€çš„å¤‡å¿˜å½•å¯¹è±¡
+     */
+    public void setMemento(Memento memento) {
+        MementoImpl mementoImpl = (MementoImpl) memento;
+        this.state = mementoImpl.getState();
+    }
+
+    /**
+     * çœŸæ­£çš„å¤‡å¿˜å½•å¯¹è±¡ï¼Œå®ç°å¤‡å¿˜å½•çª„æ¥å£
+     * å®ç°æˆç§æœ‰çš„å†…éƒ¨ç±»ï¼Œä¸è®©å¤–éƒ¨è®¿é—®
+     */
+    private static class MementoImpl implements Memento {
+        /**
+         * ç¤ºæ„ï¼Œè¡¨ç¤ºéœ€è¦ä¿å­˜çš„çŠ¶æ€
+         */
+        private String state = "";
+
+        public MementoImpl(String state) {
+            this.state = state;
+        }
+
+        public String getState() {
+            return state;
+        }
+    }
 
 }
 

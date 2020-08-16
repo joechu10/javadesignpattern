@@ -26,7 +26,7 @@ public class Client {
         //实现比较器，也可以单独用一个类来实现
         Comparator c = new Comparator() {
             public int compare(Object obj1, Object obj2) {
-                //假如实现按照年龄升序排序
+                //假如实现按照年龄降序排序
                 UserModel tempUm1 = (UserModel) obj1;
                 UserModel tempUm2 = (UserModel) obj2;
                 if (tempUm1.getAge() > tempUm2.getAge()) {

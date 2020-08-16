@@ -1,23 +1,23 @@
 package cn.javass.dp.memento.example1;
 
 public class Client {
-	public static void main(String[] args) {
-		// ´´½¨Ä£ÄâÔËĞĞÁ÷³ÌµÄ¶ÔÏó
-		FlowAMock mock = new FlowAMock("TestFlow");
-		//ÔËĞĞÁ÷³ÌµÄµÚÒ»¸ö½×¶Î
-		mock.runPhaseOne();
-		//µÃµ½µÚÒ»¸ö½×¶ÎÔËĞĞËù²úÉúµÄÊı¾İ£¬ºóÃæÒªÓÃ
-		int tempResult = mock.getTempResult();
-		String tempState = mock.getTempState();
-		
-		//°´ÕÕ·½°¸Ò»À´ÔËĞĞÁ÷³Ìºó°ë²¿·Ö
-		mock.schema1();
-		
-		//°ÑµÚÒ»¸ö½×¶ÎÔËĞĞËù²úÉúµÄÊı¾İÖØĞÂÉèÖÃ»ØÈ¥
-		mock.setTempResult(tempResult);
-		mock.setTempState(tempState);
-		
-		//°´ÕÕ·½°¸¶şÀ´ÔËĞĞÁ÷³Ìºó°ë²¿·Ö
-		mock.schema2();
-	}
+    public static void main(String[] args) {
+        // åˆ›å»ºæ¨¡æ‹Ÿè¿è¡Œæµç¨‹çš„å¯¹è±¡
+        FlowAMock mock = new FlowAMock("TestFlow");
+        //è¿è¡Œæµç¨‹çš„ç¬¬ä¸€ä¸ªé˜¶æ®µ
+        mock.runPhaseOne();
+        //å¾—åˆ°ç¬¬ä¸€ä¸ªé˜¶æ®µè¿è¡Œæ‰€äº§ç”Ÿçš„æ•°æ®ï¼Œåé¢è¦ç”¨
+        int tempResult = mock.getTempResult();
+        String tempState = mock.getTempState();
+
+        //æŒ‰ç…§æ–¹æ¡ˆä¸€æ¥è¿è¡Œæµç¨‹ååŠéƒ¨åˆ†
+        mock.schema1();
+
+        //æŠŠç¬¬ä¸€ä¸ªé˜¶æ®µè¿è¡Œæ‰€äº§ç”Ÿçš„æ•°æ®é‡æ–°è®¾ç½®å›å»
+        mock.setTempResult(tempResult);
+        mock.setTempState(tempState);
+
+        //æŒ‰ç…§æ–¹æ¡ˆäºŒæ¥è¿è¡Œæµç¨‹ååŠéƒ¨åˆ†
+        mock.schema2();
+     }
 }

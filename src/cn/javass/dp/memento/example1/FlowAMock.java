@@ -1,65 +1,73 @@
 package cn.javass.dp.memento.example1;
+
 /**
- * Ä£ÄâÔËĞĞÁ÷³ÌA£¬Ö»ÊÇÒ»¸öÊ¾Òâ£¬´úÖ¸Ä³¸ö¾ßÌåÁ÷³Ì
+ * æ¨¡æ‹Ÿè¿è¡Œæµç¨‹Aï¼Œåªæ˜¯ä¸€ä¸ªç¤ºæ„ï¼Œä»£æŒ‡æŸä¸ªå…·ä½“æµç¨‹
  */
 public class FlowAMock {
-	/**
-	 * Á÷³ÌÃû³Æ£¬²»ĞèÒªÍâ²¿´æ´¢µÄ×´Ì¬Êı¾İ
-	 */
-	private String flowName;
-	/**
-	 * Ê¾Òâ£¬´úÖ¸Ä³¸öÖĞ¼ä½á¹û£¬ĞèÒªÍâ²¿´æ´¢µÄ×´Ì¬Êı¾İ
-	 */
-	private int tempResult;
-	/**
-	 * Ê¾Òâ£¬´úÖ¸Ä³¸öÖĞ¼ä½á¹û£¬ĞèÒªÍâ²¿´æ´¢µÄ×´Ì¬Êı¾İ
-	 */
-	private String tempState;
-	/**
-	 * ¹¹Ôì·½·¨£¬´«ÈëÁ÷³ÌÃû³Æ
-	 * @param flowName Á÷³ÌÃû³Æ
-	 */
-	public FlowAMock(String flowName){
-		this.flowName = flowName;
-	}
-	
-	public String getTempState() {
-		return tempState;
-	}
-	public void setTempState(String tempState) {
-		this.tempState = tempState;
-	}
-	public int getTempResult() {
-		return tempResult;
-	}
-	public void setTempResult(int tempResult) {
-		this.tempResult = tempResult;
-	}
-	
-	/**
-	 * Ê¾Òâ£¬ÔËĞĞÁ÷³ÌµÄµÚÒ»¸ö½×¶Î
-	 */
-	public void runPhaseOne(){
-		//ÔÚÕâ¸ö½×¶Î£¬¿ÉÄÜ²úÉúÁËÖĞ¼ä½á¹û£¬Ê¾ÒâÒ»ÏÂ
-		tempResult = 3;
-		tempState = "PhaseOne";
-	}
-	/**
-	 * Ê¾Òâ£¬°´ÕÕ·½°¸Ò»À´ÔËĞĞÁ÷³Ìºó°ë²¿·Ö
-	 */
-	public void schema1(){
-		//Ê¾Òâ£¬ĞèÒªÊ¹ÓÃµÚÒ»¸ö½×¶Î²úÉúµÄÊı¾İ
-		this.tempState += ",Schema1";
-		System.out.println(this.tempState + " : now run "+tempResult);
-		this.tempResult += 11;
-	}
-	/**
-	 * Ê¾Òâ£¬°´ÕÕ·½°¸¶şÀ´ÔËĞĞÁ÷³Ìºó°ë²¿·Ö
-	 */
-	public void schema2(){
-		//Ê¾Òâ£¬ĞèÒªÊ¹ÓÃµÚÒ»¸ö½×¶Î²úÉúµÄÊı¾İ
-		this.tempState += ",Schema2";
-		System.out.println(this.tempState + " : now run "+tempResult);
-		this.tempResult += 22;
-	}	
+    /**
+     * æµç¨‹åç§°ï¼Œä¸éœ€è¦å¤–éƒ¨å­˜å‚¨çš„çŠ¶æ€æ•°æ®
+     */
+    private String flowName;
+    /**
+     * ç¤ºæ„ï¼Œä»£æŒ‡æŸä¸ªä¸­é—´ç»“æœï¼Œéœ€è¦å¤–éƒ¨å­˜å‚¨çš„çŠ¶æ€æ•°æ®
+     */
+    private int tempResult;
+    /**
+     * ç¤ºæ„ï¼Œä»£æŒ‡æŸä¸ªä¸­é—´ç»“æœï¼Œéœ€è¦å¤–éƒ¨å­˜å‚¨çš„çŠ¶æ€æ•°æ®
+     */
+    private String tempState;
+
+    /**
+     * æ„é€ æ–¹æ³•ï¼Œä¼ å…¥æµç¨‹åç§°
+     *
+     * @param flowName æµç¨‹åç§°
+     */
+    public FlowAMock(String flowName) {
+        this.flowName = flowName;
+    }
+
+    public String getTempState() {
+        return tempState;
+    }
+
+    public void setTempState(String tempState) {
+        this.tempState = tempState;
+    }
+
+    public int getTempResult() {
+        return tempResult;
+    }
+
+    public void setTempResult(int tempResult) {
+        this.tempResult = tempResult;
+    }
+
+    /**
+     * ç¤ºæ„ï¼Œè¿è¡Œæµç¨‹çš„ç¬¬ä¸€ä¸ªé˜¶æ®µ
+     */
+    public void runPhaseOne() {
+        //åœ¨è¿™ä¸ªé˜¶æ®µï¼Œå¯èƒ½äº§ç”Ÿäº†ä¸­é—´ç»“æœï¼Œç¤ºæ„ä¸€ä¸‹
+        tempResult = 3;
+        tempState = "PhaseOne";
+    }
+
+    /**
+     * ç¤ºæ„ï¼ŒæŒ‰ç…§æ–¹æ¡ˆä¸€æ¥è¿è¡Œæµç¨‹ååŠéƒ¨åˆ†
+     */
+    public void schema1() {
+        //ç¤ºæ„ï¼Œéœ€è¦ä½¿ç”¨ç¬¬ä¸€ä¸ªé˜¶æ®µäº§ç”Ÿçš„æ•°æ®
+        this.tempState += ",Schema1";
+        System.out.println(this.tempState + " : now run " + tempResult);
+        this.tempResult += 11;
+    }
+
+    /**
+     * ç¤ºæ„ï¼ŒæŒ‰ç…§æ–¹æ¡ˆäºŒæ¥è¿è¡Œæµç¨‹ååŠéƒ¨åˆ†
+     */
+    public void schema2() {
+        //ç¤ºæ„ï¼Œéœ€è¦ä½¿ç”¨ç¬¬ä¸€ä¸ªé˜¶æ®µäº§ç”Ÿçš„æ•°æ®
+        this.tempState += ",Schema2";
+        System.out.println(this.tempState + " : now run " + tempResult);
+        this.tempResult += 22;
+    }
 }

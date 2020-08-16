@@ -1,111 +1,120 @@
 package cn.javass.dp.memento.example4;
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.List;
+
 /**
- * ¼ÆËãÆ÷Àà£¬¼ÆËãÆ÷ÉÏÓĞ¼Ó·¨°´Å¥¡¢¼õ·¨°´Å¥£¬»¹ÓĞ³·ÏúºÍ»Ö¸´µÄ°´Å¥
+ * è®¡ç®—å™¨ç±»ï¼Œè®¡ç®—å™¨ä¸Šæœ‰åŠ æ³•æŒ‰é’®ã€å‡æ³•æŒ‰é’®ï¼Œè¿˜æœ‰æ’¤é”€å’Œæ¢å¤çš„æŒ‰é’®
  */
 public class Calculator {
-	/**
-	 * ÃüÁîµÄ²Ù×÷µÄÀúÊ·¼ÇÂ¼£¬ÔÚ³·ÏúÊ±ºòÓÃ
-	 */
-	private List<Command> undoCmds = new ArrayList<Command>();
-	/**
-	 * ÃüÁî±»³·ÏúµÄÀúÊ·¼ÇÂ¼£¬ÔÚ»Ö¸´Ê±ºòÓÃ
-	 */
-	private List<Command> redoCmds = new ArrayList<Command>();
-	/**
-	 * ÃüÁî²Ù×÷¶ÔÓ¦µÄ±¸ÍüÂ¼¶ÔÏóµÄÀúÊ·¼ÇÂ¼£¬ÔÚ³·ÏúÊ±ºòÓÃ
-	 * ÓÉÓÚ¶ÔÓÚÃ¿¸öÃüÁî¶ÔÏó£¬³·ÏúºÍÖØ×öµÄ×´Ì¬ÊÇ²»Ò»ÑùµÄ£¬
-	 * ³·ÏúÊÇ»Øµ½ÃüÁî²Ù×÷Ç°µÄ×´Ì¬£¬¶øÖØ×öÊÇ»Øµ½ÃüÁî²Ù×÷ºóµÄ×´Ì¬£¬
-	 * Òò´Ë¶ÔÃ¿Ò»¸öÃüÁî£¬Ê¹ÓÃÒ»¸ö±¸ÍüÂ¼¶ÔÏóµÄÊı×éÀ´¼ÇÂ¼¶ÔÓ¦µÄ×´Ì¬
-	 */
-	private List<Memento[]> undoMementos = new ArrayList<Memento[]>();
-	/**
-	 * ±»³·ÏúÃüÁî¶ÔÓ¦µÄ±¸ÍüÂ¼¶ÔÏóµÄÀúÊ·¼ÇÂ¼£¬ÔÚ»Ö¸´Ê±ºòÓÃ,
-	 * Êı×éÓĞÁ½¸öÔªËØ£¬µÚÒ»¸öÊÇÃüÁîÖ´ĞĞÇ°µÄ×´Ì¬£¬µÚ¶ş¸öÊÇÃüÁîÖ´ĞĞºóµÄ×´Ì¬
-	 */
-	private List<Memento[]> redoMementos = new ArrayList<Memento[]>();
-	
-	private Command addCmd = null;
-	private Command substractCmd = null;
-	public void setAddCmd(Command addCmd) {
-		this.addCmd = addCmd;
-	}
-	public void setSubstractCmd(Command substractCmd) {
-		this.substractCmd = substractCmd;
-	}	
-	public void addPressed(){
-		//»ñÈ¡¶ÔÓ¦µÄ±¸ÍüÂ¼¶ÔÏó£¬²¢±£´æÔÚÏàÓ¦µÄÀúÊ·¼ÇÂ¼ÀïÃæ
-		Memento m1 = this.addCmd.createMemento();
-		
-		//Ö´ĞĞÃüÁî
-		this.addCmd.execute();
-		
-		//°Ñ²Ù×÷¼ÇÂ¼µ½ÀúÊ·¼ÇÂ¼ÀïÃæ
-		undoCmds.add(this.addCmd);
-		
-		//»ñÈ¡Ö´ĞĞÃüÁîºóµÄ±¸ÍüÂ¼¶ÔÏó
-		Memento m2 = this.addCmd.createMemento();
-		//ÉèÖÃµ½³·ÏúµÄÀúÊ·¼ÇÂ¼ÀïÃæ
-		this.undoMementos.add(new Memento[]{m1,m2});
-	}
-	public void substractPressed(){
-		//»ñÈ¡¶ÔÓ¦µÄ±¸ÍüÂ¼¶ÔÏó£¬²¢±£´æÔÚÏàÓ¦µÄÀúÊ·¼ÇÂ¼ÀïÃæ		
-		Memento m1 = this.substractCmd.createMemento();
-		
-		//Ö´ĞĞÃüÁî
-		this.substractCmd.execute();
-		
-		//°Ñ²Ù×÷¼ÇÂ¼µ½ÀúÊ·¼ÇÂ¼ÀïÃæ
-		undoCmds.add(this.substractCmd);
-		
-		//»ñÈ¡Ö´ĞĞÃüÁîºóµÄ±¸ÍüÂ¼¶ÔÏó
-		Memento m2 = this.substractCmd.createMemento();
-		//ÉèÖÃµ½³·ÏúµÄÀúÊ·¼ÇÂ¼ÀïÃæ
-		this.undoMementos.add(new Memento[]{m1,m2});
-	}
-	public void undoPressed(){
-		if(undoCmds.size()>0){
-			//È¡³ö×îºóÒ»¸öÃüÁîÀ´³·Ïú
-			Command cmd = undoCmds.get(undoCmds.size()-1);
-			//»ñÈ¡¶ÔÓ¦µÄ±¸ÍüÂ¼¶ÔÏó
-			Memento[] ms = undoMementos.get(undoCmds.size()-1);
-			
-			//³·Ïú
-			cmd.undo(ms[0]);
-			
-			//Èç¹û»¹ÓĞ»Ö¸´µÄ¹¦ÄÜ£¬ÄÇ¾Í°ÑÕâ¸öÃüÁî¼ÇÂ¼µ½»Ö¸´µÄÀúÊ·¼ÇÂ¼ÀïÃæ
-			redoCmds.add(cmd);
-			//°ÑÏàÓ¦µÄ±¸ÍüÂ¼¶ÔÏóÒ²Ìí¼Ó¹ıÈ¥
-			redoMementos.add(ms);
-			
-			//È»ºó°Ñ×îºóÒ»¸öÃüÁîÉ¾³ıµô£¬
-			undoCmds.remove(cmd);
-			//°ÑÏàÓ¦µÄ±¸ÍüÂ¼¶ÔÏóÒ²É¾³ıµô
-			undoMementos.remove(ms);
-		}else{
-			System.out.println("ºÜ±§Ç¸£¬Ã»ÓĞ¿É³·ÏúµÄÃüÁî");
-		}
-	}
-	public void redoPressed(){
-		if(redoCmds.size()>0){
-			//È¡³ö×îºóÒ»¸öÃüÁîÀ´ÖØ×ö
-			Command cmd = redoCmds.get(redoCmds.size()-1);
-			//»ñÈ¡¶ÔÓ¦µÄ±¸ÍüÂ¼¶ÔÏó
-			Memento[] ms = redoMementos.get(redoCmds.size()-1);
+    /**
+     * å‘½ä»¤çš„æ“ä½œçš„å†å²è®°å½•ï¼Œåœ¨æ’¤é”€æ—¶å€™ç”¨
+     */
+    private List<Command> undoCmds = new ArrayList<Command>();
+    /**
+     * å‘½ä»¤è¢«æ’¤é”€çš„å†å²è®°å½•ï¼Œåœ¨æ¢å¤æ—¶å€™ç”¨
+     */
+    private List<Command> redoCmds = new ArrayList<Command>();
+    /**
+     * å‘½ä»¤æ“ä½œå¯¹åº”çš„å¤‡å¿˜å½•å¯¹è±¡çš„å†å²è®°å½•ï¼Œåœ¨æ’¤é”€æ—¶å€™ç”¨
+     * ç”±äºå¯¹äºæ¯ä¸ªå‘½ä»¤å¯¹è±¡ï¼Œæ’¤é”€å’Œé‡åšçš„çŠ¶æ€æ˜¯ä¸ä¸€æ ·çš„ï¼Œ
+     * æ’¤é”€æ˜¯å›åˆ°å‘½ä»¤æ“ä½œå‰çš„çŠ¶æ€ï¼Œè€Œé‡åšæ˜¯å›åˆ°å‘½ä»¤æ“ä½œåçš„çŠ¶æ€ï¼Œ
+     * å› æ­¤å¯¹æ¯ä¸€ä¸ªå‘½ä»¤ï¼Œä½¿ç”¨ä¸€ä¸ªå¤‡å¿˜å½•å¯¹è±¡çš„æ•°ç»„æ¥è®°å½•å¯¹åº”çš„çŠ¶æ€
+     */
+    private List<Memento[]> undoMementos = new ArrayList<Memento[]>();
+    /**
+     * è¢«æ’¤é”€å‘½ä»¤å¯¹åº”çš„å¤‡å¿˜å½•å¯¹è±¡çš„å†å²è®°å½•ï¼Œåœ¨æ¢å¤æ—¶å€™ç”¨,
+     * æ•°ç»„æœ‰ä¸¤ä¸ªå…ƒç´ ï¼Œç¬¬ä¸€ä¸ªæ˜¯å‘½ä»¤æ‰§è¡Œå‰çš„çŠ¶æ€ï¼Œç¬¬äºŒä¸ªæ˜¯å‘½ä»¤æ‰§è¡Œåçš„çŠ¶æ€
+     */
+    private List<Memento[]> redoMementos = new ArrayList<Memento[]>();
 
-			//ÖØ×ö
-			cmd.redo(ms[1]);
-			
-			//°ÑÕâ¸öÃüÁî¼ÇÂ¼µ½¿É³·ÏúµÄÀúÊ·¼ÇÂ¼ÀïÃæ
-			undoCmds.add(cmd);
-			//°ÑÏàÓ¦µÄ±¸ÍüÂ¼¶ÔÏóÒ²Ìí¼Ó¹ıÈ¥
-			undoMementos.add(ms);
-			//È»ºó°Ñ×îºóÒ»¸öÃüÁîÉ¾³ıµô
-			redoCmds.remove(cmd);
-			//°ÑÏàÓ¦µÄ±¸ÍüÂ¼¶ÔÏóÒ²É¾³ıµô
-			redoMementos.remove(ms);
-		}else{
-			System.out.println("ºÜ±§Ç¸£¬Ã»ÓĞ¿É»Ö¸´µÄÃüÁî");
-		}
-	}
+    private Command addCmd = null;
+    private Command substractCmd = null;
+
+    public void setAddCmd(Command addCmd) {
+        this.addCmd = addCmd;
+    }
+
+    public void setSubstractCmd(Command substractCmd) {
+        this.substractCmd = substractCmd;
+    }
+
+    public void addPressed() {
+        //è·å–å¯¹åº”çš„å¤‡å¿˜å½•å¯¹è±¡ï¼Œå¹¶ä¿å­˜åœ¨ç›¸åº”çš„å†å²è®°å½•é‡Œé¢
+        Memento m1 = this.addCmd.createMemento();
+
+        //æ‰§è¡Œå‘½ä»¤
+        this.addCmd.execute();
+
+        //æŠŠæ“ä½œè®°å½•åˆ°å†å²è®°å½•é‡Œé¢
+        undoCmds.add(this.addCmd);
+
+        //è·å–æ‰§è¡Œå‘½ä»¤åçš„å¤‡å¿˜å½•å¯¹è±¡
+        Memento m2 = this.addCmd.createMemento();
+        //è®¾ç½®åˆ°æ’¤é”€çš„å†å²è®°å½•é‡Œé¢
+        this.undoMementos.add(new Memento[]{m1, m2});
+    }
+
+    public void substractPressed() {
+        //è·å–å¯¹åº”çš„å¤‡å¿˜å½•å¯¹è±¡ï¼Œå¹¶ä¿å­˜åœ¨ç›¸åº”çš„å†å²è®°å½•é‡Œé¢
+        Memento m1 = this.substractCmd.createMemento();
+
+        //æ‰§è¡Œå‘½ä»¤
+        this.substractCmd.execute();
+
+        //æŠŠæ“ä½œè®°å½•åˆ°å†å²è®°å½•é‡Œé¢
+        undoCmds.add(this.substractCmd);
+
+        //è·å–æ‰§è¡Œå‘½ä»¤åçš„å¤‡å¿˜å½•å¯¹è±¡
+        Memento m2 = this.substractCmd.createMemento();
+        //è®¾ç½®åˆ°æ’¤é”€çš„å†å²è®°å½•é‡Œé¢
+        this.undoMementos.add(new Memento[]{m1, m2});
+    }
+
+    public void undoPressed() {
+        if (undoCmds.size() > 0) {
+            //å–å‡ºæœ€åä¸€ä¸ªå‘½ä»¤æ¥æ’¤é”€
+            Command cmd = undoCmds.get(undoCmds.size() - 1);
+            //è·å–å¯¹åº”çš„å¤‡å¿˜å½•å¯¹è±¡
+            Memento[] ms = undoMementos.get(undoCmds.size() - 1);
+
+            //æ’¤é”€
+            cmd.undo(ms[0]);
+
+            //å¦‚æœè¿˜æœ‰æ¢å¤çš„åŠŸèƒ½ï¼Œé‚£å°±æŠŠè¿™ä¸ªå‘½ä»¤è®°å½•åˆ°æ¢å¤çš„å†å²è®°å½•é‡Œé¢
+            redoCmds.add(cmd);
+            //æŠŠç›¸åº”çš„å¤‡å¿˜å½•å¯¹è±¡ä¹Ÿæ·»åŠ è¿‡å»
+            redoMementos.add(ms);
+
+            //ç„¶åæŠŠæœ€åä¸€ä¸ªå‘½ä»¤åˆ é™¤æ‰ï¼Œ
+            undoCmds.remove(cmd);
+            //æŠŠç›¸åº”çš„å¤‡å¿˜å½•å¯¹è±¡ä¹Ÿåˆ é™¤æ‰
+            undoMementos.remove(ms);
+        } else {
+            System.out.println("å¾ˆæŠ±æ­‰ï¼Œæ²¡æœ‰å¯æ’¤é”€çš„å‘½ä»¤");
+        }
+    }
+
+    public void redoPressed() {
+        if (redoCmds.size() > 0) {
+            //å–å‡ºæœ€åä¸€ä¸ªå‘½ä»¤æ¥é‡åš
+            Command cmd = redoCmds.get(redoCmds.size() - 1);
+            //è·å–å¯¹åº”çš„å¤‡å¿˜å½•å¯¹è±¡
+            Memento[] ms = redoMementos.get(redoCmds.size() - 1);
+
+            //é‡åš
+            cmd.redo(ms[1]);
+
+            //æŠŠè¿™ä¸ªå‘½ä»¤è®°å½•åˆ°å¯æ’¤é”€çš„å†å²è®°å½•é‡Œé¢
+            undoCmds.add(cmd);
+            //æŠŠç›¸åº”çš„å¤‡å¿˜å½•å¯¹è±¡ä¹Ÿæ·»åŠ è¿‡å»
+            undoMementos.add(ms);
+            //ç„¶åæŠŠæœ€åä¸€ä¸ªå‘½ä»¤åˆ é™¤æ‰
+            redoCmds.remove(cmd);
+            //æŠŠç›¸åº”çš„å¤‡å¿˜å½•å¯¹è±¡ä¹Ÿåˆ é™¤æ‰
+            redoMementos.remove(ms);
+        } else {
+            System.out.println("å¾ˆæŠ±æ­‰ï¼Œæ²¡æœ‰å¯æ¢å¤çš„å‘½ä»¤");
+        }
+    }
 }

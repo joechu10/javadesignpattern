@@ -1,26 +1,30 @@
 package cn.javass.dp.memento.example2;
-import java.util.*;
+
 /**
- * ¸ºÔğ±£´æ±¸ÍüÂ¼µÄ¶ÔÏó
+ * è´Ÿè´£ä¿å­˜å¤‡å¿˜å½•çš„å¯¹è±¡
  */
-public class Caretaker{
-	/**
-	 * ¼ÇÂ¼±»±£´æµÄ±¸ÍüÂ¼¶ÔÏó
-	 */
-	private Memento memento = null;
-	/**
-	 * ±£´æ±¸ÍüÂ¼¶ÔÏó
-	 * @param memento ±»±£´æµÄ±¸ÍüÂ¼¶ÔÏó
-	 */
-	public void saveMemento(Memento memento){
-		this.memento = memento;
-	}
-	/**
-	 * »ñÈ¡±»±£´æµÄ±¸ÍüÂ¼¶ÔÏó
-	 * @return ±»±£´æµÄ±¸ÍüÂ¼¶ÔÏó
-	 */
-	public Memento retriveMemento(){
-		return this.memento;
-	}
+public class Caretaker {
+    /**
+     * è®°å½•è¢«ä¿å­˜çš„å¤‡å¿˜å½•å¯¹è±¡
+     */
+    private Memento memento = null;
+
+    /**
+     * ä¿å­˜å¤‡å¿˜å½•å¯¹è±¡
+     *
+     * @param memento è¢«ä¿å­˜çš„å¤‡å¿˜å½•å¯¹è±¡
+     */
+    public void saveMemento(Memento memento) {
+        this.memento = memento;
+    }
+
+    /**
+     * è·å–è¢«ä¿å­˜çš„å¤‡å¿˜å½•å¯¹è±¡
+     *
+     * @return è¢«ä¿å­˜çš„å¤‡å¿˜å½•å¯¹è±¡
+     */
+    public Memento retriveMemento() {
+        return this.memento;
+    }
 }
 

@@ -1,60 +1,64 @@
 package cn.javass.dp.memento.example3;
 
 import java.io.*;
-/**
- * ¸ºÔğÔÚÎÄ¼şÖĞ±£´æÄ£ÄâÔËĞĞÁ÷³ÌAµÄ¶ÔÏóµÄ±¸ÍüÂ¼¶ÔÏó
- */
-public class FlowAMementoFileCareTaker {
 
-	/**
-	 * ±£´æ±¸ÍüÂ¼¶ÔÏó
-	 * @param memento ±»±£´æµÄ±¸ÍüÂ¼¶ÔÏó
-	 */
-	public void saveMemento(FlowAMockMemento memento){
-		//Ğ´µ½ÎÄ¼şÖĞ
-		ObjectOutputStream out = null;
-		try{
-			out = new ObjectOutputStream(
-					new BufferedOutputStream(
-							new FileOutputStream("FlowAMemento")
-					)
-			);
-			out.writeObject(memento);
-			System.out.println("now write file==========");
-		}catch(Exception err){
-			err.printStackTrace();
-		}finally{
-			try {
-				out.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-	}
-	/**
-	 * »ñÈ¡±»±£´æµÄ±¸ÍüÂ¼¶ÔÏó
-	 * @return ±»±£´æµÄ±¸ÍüÂ¼¶ÔÏó
-	 */
-	public FlowAMockMemento retriveMemento(){
-		FlowAMockMemento memento = null;
-		//´ÓÎÄ¼şÖĞ»ñÈ¡±¸ÍüÂ¼Êı¾İ
-		ObjectInputStream in = null;
-		try{
-			in = new ObjectInputStream(
-					new BufferedInputStream(
-							new FileInputStream("FlowAMemento")
-					)
-			);
-			memento = (FlowAMockMemento)in.readObject();
-		}catch(Exception err){
-			err.printStackTrace();
-		}finally{
-			try {
-				in.close();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		return memento;
-	}
+/**
+ * è´Ÿè´£åœ¨æ–‡ä»¶ä¸­ä¿å­˜æ¨¡æ‹Ÿè¿è¡Œæµç¨‹Açš„å¯¹è±¡çš„å¤‡å¿˜å½•å¯¹è±¡
+ */
+public class  FlowAMementoFileCareTaker {
+
+    /**
+     * ä¿å­˜å¤‡å¿˜å½•å¯¹è±¡
+     *
+     * @param memento è¢«ä¿å­˜çš„å¤‡å¿˜å½•å¯¹è±¡
+     */
+    public void saveMemento(FlowAMockMemento memento) {
+        //å†™åˆ°æ–‡ä»¶ä¸­
+        ObjectOutputStream out = null;
+        try {
+            out = new ObjectOutputStream(
+                    new BufferedOutputStream(
+                            new FileOutputStream("FlowAMemento")
+                    )
+            );
+            out.writeObject(memento);
+            System.out.println("now write file==========");
+        } catch (Exception err) {
+            err.printStackTrace();
+        } finally {
+            try {
+                out.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * è·å–è¢«ä¿å­˜çš„å¤‡å¿˜å½•å¯¹è±¡
+     *
+     * @return è¢«ä¿å­˜çš„å¤‡å¿˜å½•å¯¹è±¡
+     */
+    public FlowAMockMemento retriveMemento() {
+        FlowAMockMemento memento = null;
+        //ä»æ–‡ä»¶ä¸­è·å–å¤‡å¿˜å½•æ•°æ®
+        ObjectInputStream in = null;
+        try {
+            in = new ObjectInputStream(
+                    new BufferedInputStream(
+                            new FileInputStream("FlowAMemento")
+                    )
+            );
+            memento = (FlowAMockMemento) in.readObject();
+        } catch (Exception err) {
+            err.printStackTrace();
+        } finally {
+            try {
+                in.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return memento;
+    }
 }
